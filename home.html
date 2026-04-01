@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Colin Leslie - Song of the Summer voting app" />
+  <meta name="keywords" content="Song of the Summer, Voting, Playlist, Colin Leslie" />
+  <meta name="author" content="Colin Leslie" />
+  <title>Song of the Summer</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Caveat|Open+Sans:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="song-of-the-summer-styles.css">
+  <link rel="stylesheet" href="../css/global-styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="icon" href="../images/favicon.ico">
+</head>
+
+<body>
+  <header>
+    <div class="customnavbar">
+      <a href="home.html">Home</a>
+      <a href="../resume.html">Resume</a>
+      <a href="../portfolio.html">Portfolio</a>
+
+      <div class="customnavBar">
+        <div class="customdropdown">
+          <button class="customdropbtn" onclick="showContactDropdown()">Contact</button>
+          <div class="customdropdown-content" id="myDropdown">
+            <h4>Reach me at:</h4>
+            <h4 id="email"><a href="mailto:colinbleslie@gmail.com">Colinbleslie@gmail.com</a></h4>
+            <div id="emailAddress" style="display: none;">colinbleslie@gmail.com</div>
+            <button type="button" onclick="copyToClipboard(this)" id="btnCopy" title="Copy to Clipboard">
+              <img id="clipboardImg" src="../images/clipboard.png" alt="Copy email">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero">
+      <h1 id="playlistName">Song of the Summer</h1>
+      <p id="playlistMeta" class="muted">Loading playlist…</p>
+    </section>
+
+    <section class="controls" aria-label="Playlist controls">
+      <input id="searchInput" type="text" placeholder="Search by song or artist" aria-label="Search songs">
+      <select id="sortSelect" aria-label="Sort songs">
+        <option value="random">Sort: Random</option>
+        <option value="title">Sort: Title (A-Z)</option>
+        <option value="artist">Sort: Artist (A-Z)</option>
+      </select>
+      <button id="resetVotesBtn" class="btn btn-default">Reset local votes</button>
+    </section>
+
+    <section id="statusBar" class="status-bar" aria-live="polite"></section>
+
+    <section id="songListContainer" class="song-grid" aria-live="polite"></section>
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div id="modal-content" class="modal-content" role="dialog" aria-modal="true" aria-label="Vote modal"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script type="text/javascript" src="SongOfTheSummer.js"></script>
+</body>
+
+</html>
